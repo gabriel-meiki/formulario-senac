@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Freelancer</title>
+    <style>
+        body {
+            background-color: #011F26;
+            color: #BFB78F;
+            font-family: Arial, sans-serif;
+        }
+        form {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px 40px;
+            background-color: #025E73;
+            border-radius: 10px;
+        }
+        label {
+            display: block;
+            margin: 8px 0 4px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 12px;
+            border: 2px solid #F2A71B;
+            border-radius: 5px;
+            background-color: #BFB78F;
+            color: #011F26;
+        }
+        input[type="radio"], input[type="checkbox"] {
+            width: auto;
+            margin-right: 8px;
+        }
+        button {
+            background-color: #F2A71B;
+            color: #011F26;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #BFB78F;
+        }
+    </style>
+</head>
+<body>
+    <form id="freelancerForm">
+        <h2>Formulário de Freelancer</h2>
+
+        <label for="nome">Nome *</label>
+        <input type="text" id="nome" name="nome" required>
+
+        <label for="sobrenome">Sobrenome *</label>
+        <input type="text" id="sobrenome" name="sobrenome" required>
+
+        <label for="telefone">Telefone *</label>
+        <input type="tel" id="telefone" name="telefone" placeholder="(99)99999-9999" pattern="\(\d{2}\)\d{5}-\d{4}" required>
+
+        <label for="email">E-mail *</label>
+        <input type="email" id="email" name="email" placeholder="email@exemplo.com" required>
+
+        <label for="mensagem">Mensagem *</label>
+        <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
+
+        <label for="lingua">Língua aplicada no serviço</label>
+        <select id="lingua" name="lingua">
+            <option value="pt-br">Português (pt-br)</option>
+            <option value="en">Inglês</option>
+            <option value="es">Espanhol</option>
+            <option value="fr">Francês</option>
+        </select>
+
+        <label for="prototipo">Prototipo (Apenas PDF, DOC, DOCX, JPEG, PNG)</label>
+        <input type="file" id="prototipo" name="prototipo" accept=".pdf,.doc,.docx,.jpeg,.png">
+
+        <label for="linguagens">As linguagens que você prefere:</label>
+        <select id="linguagens" name="linguagens[]" multiple required>
+            <option value="Java">Java</option>
+            <option value="C">C</option>
+            <option value="C++">C++</option>
+            <option value="PHP">PHP</option>
+            <option value="Python">Python</option>
+            <option value="JavaScript">JavaScript</option>
+        </select>
+
+        <label for="bancoDados">Banco de Dados</label>
+        <div>
+            <input type="radio" id="mysql" name="bancoDados" value="MySQL" required>
+            <label for="mysql">MySQL</label>
+            <input type="radio" id="postgresql" name="bancoDados" value="Postgresql">
+            <label for="postgresql">PostgreSQL</label>
+            <input type="radio" id="mongodb" name="bancoDados" value="MongoDB">
+            <label for="mongodb">MongoDB</label>
+            <input type="radio" id="na" name="bancoDados" value="NA">
+            <label for="na">N/A</label>
+        </div>
+
+        <label for="turno">Turno para Reuniões *</label>
+        <select id="turno" name="turno" required>
+            <option value="manha">Manhã</option>
+            <option value="tarde">Tarde</option>
+            <option value="noite">Noite</option>
+        </select>
+
+        <label for="horario">Horário Sugerido</label>
+        <input type="time" id="horario" name="horario">
+
+        <label for="dataEntrega">Data Prevista de Entrega *</label>
+        <input type="date" id="dataEntrega" name="dataEntrega" required>
+
+        <button type="submit">Enviar</button>
+        <button type="reset">Limpar</button>
+    </form>
+
+    <script>
+        document.getElementById("freelancerForm").addEventListener("submit", function(event) {
+            if (!this.checkValidity()) {
+                alert("Preencha todos os campos obrigatórios.");
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
